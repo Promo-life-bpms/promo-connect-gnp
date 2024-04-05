@@ -206,8 +206,8 @@
                                     <div class="grid grid-cols-3 gap-4">
                                         <select id="logos" name="logos" class=" mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" style="width: 210px;">
                                             <option value="Logo_GNP.png">LOGO GNP</option>
-                                            <option value="Logo_GNP_white.png">LOGO GNP BLANCO</option>
-                                            <option value="Logo_GNP_black.png">LOGO GNP NEGRO</option>
+                                            <option value="vivir_blue.png">VIVIR AZUL</option>
+                                            <option value="vivir_orange.png">VIVIR  NARANJA</option>
                                         </select>
                                     </div>
                                     
@@ -385,8 +385,8 @@
 
         /* Logos */
         var logo1 = "{{asset('img/Logo_GNP.png')}}";
-        var logo2 = "{{asset('img/Logo_GNP_white.png')}}";
-        var logo2 = "{{asset('img/Logo_GNP_black.png')}}";
+        var logo2 = "{{asset('img/vivir_blue.png')}}";
+        var logo2 = "{{asset('img/vivir_orange.png')}}";
 
         if(imageURL.startsWith("https://catalogodeproductos.promolife.lat/")){
             imageURL = imageURL.slice(41);

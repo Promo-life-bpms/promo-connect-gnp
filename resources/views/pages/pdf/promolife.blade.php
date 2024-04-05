@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="quotesheet/pl/style.css">
 </head>
 
-<body>
+<body>|
     <header>
         {{-- <img src="quotesheet/pl/fondo-azul-superior.png" alt="" srcset="" class="fondo-head"> --}}
         <div class="fondo-head"></div>
         <div class="content" style="text-align: right">
-            <img src="quotesheet/pl/logo.png" class="logo">
+            <img src="{{asset('img/promolife.png')}}" class="logo">
         </div>
         <div class="content">
             <div style="margin-top: -40px;">
