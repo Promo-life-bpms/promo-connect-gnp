@@ -11,7 +11,7 @@
         {{-- <img src="quotesheet/pl/fondo-azul-superior.png" alt="" srcset="" class="fondo-head"> --}}
         <div class="fondo-head"></div>
         <div class="content" style="text-align: right">
-            <img src="{{asset('img/promolife.png')}}" class="logo">
+            <img style="width:200px;" src="{{asset('img/promolife.png')}}" class="logo">
         </div>
         <div class="content">
             <div style="margin-top: -40px;">
