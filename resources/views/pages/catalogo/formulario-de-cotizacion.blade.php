@@ -304,7 +304,35 @@
         <div>
             <h6 class="text-success"><strong>Precio Final por Articulo:</strong> $ {{ number_format($costoCalculado,2)}}</h6>
             <h6 class="text-success"><strong>Precio Total:</strong> $ {{ number_format($costoTotal,2)}}</h6>
+
+
+
+            <div class="form-group mt-5 mb-1">
+                <h5 class="font-bold">Detalles adicionales</h5>
+              
+                <div class="flex items-center">
+                  <input type="checkbox" name="embalaje" id="embalaje" class="mr-2">
+                  <label for="embalaje" class="text-sm">Con embalaje</label>
+                </div>
+              
+                <div class="flex items-center mt-2">
+                  <input type="checkbox" name="armado" id="armado" class="mr-2">
+                  <label for="armado" class="text-sm">Con armado</label>
+                </div>
+              
+                <div class="flex items-center mt-2">
+                  <input type="checkbox" name="destino" id="destino" class="mr-2">
+                  <label for="destino" class="text-sm">Con destino de envío</label>
+                </div>
+              
+                <div class="mt-4"> 
+                  <textarea type="textarea" rows="4" name="detalles" id="detalles" placeholder="Información adicional" class="w-full border border-gray-300 rounded-md p-2"></textarea>
+                </div>
+              </div>
         </div>
+
+
+       
         {{--  @endif --}}
         <div class="form-group m-0 mb-1 text-center">
             @if ($currentQuote)
