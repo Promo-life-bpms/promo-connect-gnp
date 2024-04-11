@@ -6,8 +6,9 @@
             <thead>
               <tr class="bg-blue-900 text-white">
                 <th style="width: 10%;" class="p-2">#</th>
-                <th style="width: 20%;">Poducto</th>
-                <th style="width: 25%;">Descripción</th>
+                <th style="width: 10%;">Imagen</th>
+                <th style="width: 15%;">Poducto</th>
+                <th style="width: 20%;">Descripción</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Total</th>
                 <th style="width: 10%;">Fecha de pedido</th>
@@ -19,13 +20,26 @@
             </thead>
             <tbody>
               @foreach ($shoppings  as $shopping)
+                @php
+                  $product = json_decode($shopping->products[0]->product, true);
+                  $productDB = \App\Models\Catalogo\Product::where('id',$product['id'])->get()->first();
+                  $productImage = $productDB->firstImage;
+
+                @endphp
                 <tr class="border border-gray-300">
                     <td class="text-center py-5 px-6">{{ $loop->iteration }}</td>
                     <td class="text-center">
-                      @php
-                        $product = json_decode($shopping->products[0]->product, true);
-                      @endphp
-                      
+                      @if($product['logo'] != '')
+                        <img src="{{$product['logo'] }}" alt="" style="width: 100px;object-fit: contain;">
+                      @else
+                        <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
+                      @endif
+
+                    
+                      {{$product['logo'] }}
+                   
+                    </td>
+                    <td class="text-center">
                       {{ $product['name'] }}
                     </td>
                     <td>
