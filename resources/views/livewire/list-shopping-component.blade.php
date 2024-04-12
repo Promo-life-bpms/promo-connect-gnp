@@ -30,9 +30,9 @@
                     <td class="text-center py-5 px-6">{{ $loop->iteration }}</td>
                     <td class="text-center">
                       @if($product['logo'] != '')
-                        <img src="{{$product['logo'] }}" alt="" style="width: 100px;object-fit: contain;">
+                        <img src="/storage/logos/{{$product['logo'] }}" alt="" style="width: 100px;object-fit: contain;">
                       @else
-                        <img src="/storage/logos/{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
+                        <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
                       @endif
                     </td>
                     <td class="text-center">
