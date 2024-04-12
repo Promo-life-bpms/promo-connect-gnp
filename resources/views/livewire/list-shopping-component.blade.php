@@ -32,12 +32,8 @@
                       @if($product['logo'] != '')
                         <img src="{{$product['logo'] }}" alt="" style="width: 100px;object-fit: contain;">
                       @else
-                        <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
+                        <img src="/storage/logos/{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
                       @endif
-
-                    
-                      {{$product['logo'] }}
-                   
                     </td>
                     <td class="text-center">
                       {{ $product['name'] }}

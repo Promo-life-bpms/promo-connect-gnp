@@ -12,8 +12,11 @@
             $totalGeneral = 0;
             if($quotes != null){
                 foreach ($quotes as $quote){
-                    $product = \App\Models\QuoteProducts::where('id', $quote->id)->get()->last();
+                    $product = \App\Models\QuoteProducts::where('id', $quote->id)->get()->first();
+
+                    $productImage = $product->firstImage;
                     $totalGeneral += intval($product->precio_total);
+
                 }
             }
            
@@ -81,16 +84,19 @@
                             $quoteTechnique = optional(\App\Models\QuoteTechniques::where('quotes_id', $quote->id)->latest()->first());
 
                             $quoteInformation = App\Models\QuoteInformation::where('id', $quote->id)->first();
- 
+
+                            $productDB = \App\Models\Catalogo\Product::where('id',$productData->id)->get()->first();
+                            $productImage = $productDB->firstImage;
+
                         @endphp
                         
                         <tr class="border">
                             <td class="text-center"><b>SQ-{{$quote->id}}</b></td>
                             <td class="text-center">
                                 @if($quote->logo == null || $quote->logo == '')
-                                    Sin logo
+                                    <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
                                 @else
-                                    <img class="w-20" src="/storage/logos/{{$quote->logo}}" alt="logo">
+                                    <img class="" src="/storage/logos/{{$quote->logo}}" alt="logo" style="width: 100px;object-fit: contain;">
                                 @endif
                             </td>
                             <td class="text-center">{{$productName }}</td>
