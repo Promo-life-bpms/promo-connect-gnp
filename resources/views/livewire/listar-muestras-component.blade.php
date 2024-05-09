@@ -1,14 +1,10 @@
 <div class="bg-white container mx-auto h-auto max-w-7xl grid md:grid-cols-2 p-3 gap-y-2">
-    <h1 class="text-2xl lg:text-4xl  font-[600] md:font-[700] md:px-4 lg:px-32 md:col-span-2">
-        <button wire:click="goBack" class="lg:hidden">
+    <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
+        <a class="text-secondary" href="/">Inicio</a>
+        <p class="text-secondary"> / </p>
+        <a class="text-secondary" href="#">Mis Muestras</a>
+    </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-8 h-8 block mb-1" style="display: inline">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
-            </svg>
-        </button>
-        MUESTRAS
-    </h1>
     <div class="md:col-end-3 col-span-1 lg:px-12 lg:ml-40">
         <label for="default-search"
             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -29,7 +25,7 @@
         </div>
     </div>
 
-    <div class="relative overflow-x-auto md:col-span-2  lg:mx-32 lg:mt-2 ">
+    <div class="relative overflow-x-auto md:col-span-2 lg:mt-2 ">
         <div class="relative mb-4" wire:loading.class="opacity-70">
             <div class="absolute top-5 w-full">
                 <div wire:loading.flex class="justify-center">
