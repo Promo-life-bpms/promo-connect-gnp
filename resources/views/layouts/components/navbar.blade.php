@@ -68,7 +68,7 @@
 
        
 
-        <div class="w-full md:w-7/12">
+        <div class="w-full md:w-7/12 -mt-2">
             <div class="flex flex-col md:flex-row justify-around">
 
                 <div class="mb-6 md:mb-0 md:mr-4 -mt-1">
@@ -78,11 +78,11 @@
                                 <button id="dropdownHoverButton" data-dropdown-toggle="dropdown"
                                     class="text-black hover:text-primary focus:ring-4 focus:outline-none p-1 font-medium focus:rounded text-lg text-center inline-flex items-center"
                                     type="button">
-                                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
 
-                                    <p class="ml-2 text-base  font-semibold">{{ strtoupper(auth()->user()->name) }}</p>
+                                    <p class="ml-2 text-xs ">{{ strtoupper(auth()->user()->name) }}</p>
 
                                 </button>
                             </div>
@@ -90,24 +90,24 @@
                     @endif
                 </div>
                 @role(['buyers-manager', 'buyer'])
-                    <div class="mb-7 md:mt-7 md:mb-0 mx-2">
-                        <p class="text-black hover:text-primary text-base  font-semibold"><a href="{{ route('compras') }}">MIS COMPRAS</a></p>
+                    <div class="mb-7 md:mt-7 md:mb-0 mx-1">
+                        <p class="text-black hover:text-primary text-xs"><a href="{{ route('compras') }}">MIS COMPRAS</a></p>
                     </div>
                 
                     <div class="mb-7 md:mt-7 md:mb-0 mx-2">
-                        <p class="text-black hover:text-primary text-base  font-semibold"><a href="{{ route('misCotizaciones') }}">MIS COTIZACIONES</a></p>
+                        <p class="text-black hover:text-primary text-xs"><a href="{{ route('misCotizaciones') }}">MIS COTIZACIONES</a></p>
                     </div>
                     <div class="mb-7 md:mt-7 md:mb-0 mx-2">
-                        <p class="text-black hover:text-primary text-base  font-semibold"><a href="{{ route('special') }}">ESPECIALES</a></p>
+                        <p class="text-black hover:text-primary text-xs"><a href="{{ route('special') }}">ESPECIALES</a></p>
                     </div>
                 @endrole
             
                 @role(['buyers-manager', 'buyer'])
 
-                    <div class="flex">
+                    <div class="flex -mt-2">
                             <a class="text-primary hover:text-primary mt-6" href="{{ route('catalogo') }}">
                                 <div class="mt-1">
-                                    <svg width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <defs>
                                         <style>.cls-1{fill:none;stroke:#000000;stroke-miterlimit:10;stroke-width:1.91px;}</style>
                                         </defs>
@@ -311,7 +311,7 @@
                             @role('buyers-manager')
                                 <li>
                                     <a href="{{ route('administrador') }}"
-                                        class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Administrador</a>
+                                        class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Administrador</a>
                                 </li>
                             @endrole
                             @role('seller')
@@ -323,18 +323,18 @@
                             @role('admin')
                                 <li>
                                     <a href="{{ route('admin.dashboard') }}"
-                                        class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Administrador</a>
+                                        class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Administrador</a>
                                 </li>
                             @endrole
                             @role(['buyers-manager', 'buyer'])
                                 <li>
                                     <a href="{{ route('compras') }}"
-                                        class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Mis
+                                        class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Mis
                                         Compras</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('muestras') }}"
-                                        class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Mis
+                                        class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Mis
                                         Muestras</a>
                                 </li>
                             @endrole
@@ -343,30 +343,30 @@
                             
                             <li>
                                 <a href="{{ route('seller.content') }}"
-                                class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Banners</a>
+                                class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Banners</a>
                             </li>
                             <li>
                                 <a href="{{ route('seller.compradores') }}"
-                                class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Compradores</a>
+                                class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Compradores</a>
                             </li>
                             <li>
                                 <a href="{{ route('compras') }}"
-                                class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Compras</a>
+                                class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Compras</a>
                             </li>
                             <li>
                                 <a href="{{ route('special') }}"
-                                class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Especiales</a>
+                                class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Especiales</a>
                             </li>
                             <li>
                                 <a href="{{ route('seller.muestras') }}"
-                                class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Muestras</a>
+                                class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Muestras</a>
                             </li>
                             
                             @endrole
 
                             <li>
                                 <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                    class="w-full text-left text-base block px-4 py-2 hover:text-black hover:bg-stone-50">Cerrar
+                                    class="w-full text-left text-xs block px-4 py-2 hover:text-black hover:bg-stone-50">Cerrar
                                     Sesion</button>
                             </li>
                         </ul>

@@ -10,14 +10,9 @@
     <div class="grid sm:grid-cols-7 grid-cols-1">
         <div class="sm:col-span-5 col-span-1 px-6">
             <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
-                <div class="w-16">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                    </svg>
-                </div>
-
-                <p class="text-4xl">CARRITO</p>
+                <a class="text-secondary" href="/">Inicio</a>
+                <p class="text-secondary"> / </p>
+                <a class="text-secondary" href="#">Carrito</a>
             </div>
 
 
@@ -234,7 +229,6 @@
                     <select id="type_sample" name="type_sample" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" wire:model="type_sample">
                         <option value="fisica sin logotipo" selected>Muestra física sin Logotipo</option>
                         <option value="fisica con logotipo">Muestra física con logotipo</option>
-                        <option value="virtual sin logotipo">Muestra virtual sin Logotipo</option>
                         <option value="virtual con logotipo">Muestra virtual con logotipo</option>
                     </select>
                 </div>

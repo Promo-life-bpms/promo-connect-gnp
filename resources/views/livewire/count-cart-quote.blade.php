@@ -5,7 +5,7 @@
             @if ($total > 0)
                 <span class="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-primary-dark border-1  rounded-full -top-2 -right-2" >{{ $total }}</span>
             @endif
-            <svg width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 
                 <defs>
                 <style>.cls-1{fill:none;stroke:#000000;stroke-miterlimit:10;stroke-width:1.91px;}</style>

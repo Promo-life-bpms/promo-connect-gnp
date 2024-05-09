@@ -7,10 +7,15 @@
                 {{ session('mensaje') }}
             </div>
         @endif --}}
-        <div class="flex justify-between mx-20 mt-20">
-            <h3 class="text-2xl font-bold "> Solicitudes especiales</h3>
-
-            <div>
+        <div class="flex justify-between mx-20">
+            
+            <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
+                <a class="text-secondary" href="/">Inicio</a>
+                <p class="text-secondary"> / </p>
+                <a class="text-secondary" href="#">Solicitudes especiales</a>
+            </div>
+        
+            <div class="mt-6">
                 <!-- Modal toggle -->
                 <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                     Crear nueva solicitud
@@ -126,7 +131,7 @@
 
                                 <td>
                                     <!-- Modal toggle -->
-                                    <button data-modal-target="edit-modal-{{$special_request->id}}" data-modal-toggle="edit-modal-{{$special_request->id}}" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-16" type="button">
+                                    <button data-modal-target="edit-modal-{{$special_request->id}}" data-modal-toggle="edit-modal-{{$special_request->id}}" class="block text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ml-16" type="button">
                                         Editar
                                     </button>
                     
@@ -140,7 +145,7 @@
                                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white text-start">
                                                         Editar solicitud
                                                     </h3>
-                                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="edit-modal-{{$special_request->id}}">
                                                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                                                         </svg>

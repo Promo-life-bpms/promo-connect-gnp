@@ -11,3 +11,7 @@
     font-family: 'zillaslap-bold';
     src: url('/fonts/ZillaSlab-Bold.ttf') format('truetype');
 }
+
+*{
+    font-family: 'Open Sans',sans-serif;
+}

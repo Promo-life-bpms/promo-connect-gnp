@@ -1,7 +1,13 @@
-<div class="w-full ">
-    <h3 class="text-2xl font-semibold mx-20 mt-20">Mis compras</h3>
-
-    <div class="w-full px-20 mt-10">
+<div class="w-full">
+    <div class="w-full px-20">
+      <div class="max-w-7xl">
+        <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
+            <a class="text-secondary" href="/">Inicio</a>
+            <p class="text-secondary"> / </p>
+            <a class="text-secondary" href="#">Mis compras</a>
+        </div>
+      </div>
+      
         <table class="w-full table-auto">
             <thead>
               <tr class="bg-blue-900 text-white">

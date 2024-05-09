@@ -1,7 +1,13 @@
 <div>
     <div class="bg-white container mx-auto h-auto max-w-7xl grid md:grid-cols-2 p-3 gap-y-1">
-        <h1 class="text-2xl lg:text-4xl col-span-1 font-[600] md:font-[700]">Compradores</h1>
-        <div class="relative col-span-1 ">
+
+         <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
+            <a class="text-secondary" href="/">Inicio</a>
+            <p class="text-secondary"> / </p>
+            <a class="text-secondary" href="#">Compradores</a>
+        </div>
+
+        <div class="relative col-span-1  mt-12">
             <input type="search"
                 class="border-2 lg:block border-gray-400 py-2 text-sm bg-white rounded-md pr-10 pl-2 focus:outline-none focus:bg-white focus:text-gray-900 w-full"
                 placeholder="Buscar..." autocomplete="off" name="busqueda" wire:model="search">
@@ -41,7 +47,7 @@
                     </div>
                 </div>
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-white uppercase bg-[#2B2D2F] ">
+                    <thead class="text-xs text-white uppercase bg-secondary ">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 NOMBRE
