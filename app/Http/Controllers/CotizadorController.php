@@ -493,7 +493,7 @@ class CotizadorController extends Controller
     }
 
     public function comprasRealizarCompra(Request $request) {
- 
+     
         $quote = Quote::where('id', $request->id )->get()->first();
         $quote_products = QuoteProducts::where('id', $request->id )->get()->first();
         $quote_techniques = QuoteTechniques::where('id', $request->id )->get()->first();
@@ -526,7 +526,7 @@ class CotizadorController extends Controller
         $createQuoteInformation->oportunity = 'Oportunidad';
         $createQuoteInformation->rank = '1';
         $createQuoteInformation->department = 'Departamento';
-        $createQuoteInformation->information = 'Info';
+        $createQuoteInformation->information = strtoupper($request->oc);
         $createQuoteInformation->tax_fee = 0;
         $createQuoteInformation->shelf_life = 10;
         $createQuoteInformation->save();
@@ -565,7 +565,9 @@ class CotizadorController extends Controller
             $createQuoteTechniques->save();
         }
 
-
+        DB::table('quote_information')->where('id',$request->id)->update([
+            'information' => strtoupper($request->oc),
+        ]);
         $date = Carbon::now()->format("d/m/Y");
 
        /*  $user = auth()->user(); 

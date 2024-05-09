@@ -206,8 +206,7 @@
                                     <div class="grid grid-cols-3 gap-4">
                                         <select id="logos" name="logos" class=" mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" style="width: 210px;">
                                             <option value="Logo_GNP.png">LOGO GNP</option>
-                                            <option value="Logo_GNP_white.png">LOGO GNP BLANCO</option>
-                                            <option value="Logo_GNP_black.png">LOGO GNP NEGRO</option>
+                                            <option value="vivir_orange.png">VIVIR  NARANJA</option>
                                         </select>
                                     </div>
                                     
@@ -305,7 +304,35 @@
         <div>
             <h6 class="text-success"><strong>Precio Final por Articulo:</strong> $ {{ number_format($costoCalculado,2)}}</h6>
             <h6 class="text-success"><strong>Precio Total:</strong> $ {{ number_format($costoTotal,2)}}</h6>
+
+
+
+            <div class="form-group mt-5 mb-1">
+                <h5 class="font-bold">Detalles adicionales</h5>
+              
+                <div class="flex items-center">
+                  <input type="checkbox" name="embalaje" id="embalaje" class="mr-2">
+                  <label for="embalaje" class="text-sm">Con embalaje</label>
+                </div>
+              
+                <div class="flex items-center mt-2">
+                  <input type="checkbox" name="armado" id="armado" class="mr-2">
+                  <label for="armado" class="text-sm">Con armado</label>
+                </div>
+              
+                <div class="flex items-center mt-2">
+                  <input type="checkbox" name="destino" id="destino" class="mr-2">
+                  <label for="destino" class="text-sm">Con destino de envío</label>
+                </div>
+              
+                <div class="mt-4"> 
+                  <textarea type="textarea" rows="4" name="detalles" id="detalles" placeholder="Información adicional" class="w-full border border-gray-300 rounded-md p-2"></textarea>
+                </div>
+              </div>
         </div>
+
+
+       
         {{--  @endif --}}
         <div class="form-group m-0 mb-1 text-center">
             @if ($currentQuote)
@@ -385,8 +412,7 @@
 
         /* Logos */
         var logo1 = "{{asset('img/Logo_GNP.png')}}";
-        var logo2 = "{{asset('img/Logo_GNP_white.png')}}";
-        var logo2 = "{{asset('img/Logo_GNP_black.png')}}";
+        var logo2 = "{{asset('img/vivir_orange.png')}}";
 
         if(imageURL.startsWith("https://catalogodeproductos.promolife.lat/")){
             imageURL = imageURL.slice(41);

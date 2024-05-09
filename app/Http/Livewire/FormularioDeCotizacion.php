@@ -272,7 +272,11 @@ class FormularioDeCotizacion extends Component
             'cantidad' => $this->cantidad,
             'precio_unitario' => $this->costoCalculado,
             'precio_total' => $this->costoTotal,
-            'logo' => $imageName
+            'logo' => $imageName,
+            'embalaje' => '1',
+            'armado'  => '1',
+            'destino' => '1',
+            
         ];
 
         $createCurrentQuote =  $currentQuote->currentQuoteDetails()->create($dataQuote);

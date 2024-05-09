@@ -12,8 +12,11 @@
             $totalGeneral = 0;
             if($quotes != null){
                 foreach ($quotes as $quote){
-                    $product = \App\Models\QuoteProducts::where('id', $quote->id)->get()->last();
+                    $product = \App\Models\QuoteProducts::where('id', $quote->id)->get()->first();
+
+                    $productImage = $product->firstImage;
                     $totalGeneral += intval($product->precio_total);
+
                 }
             }
            
@@ -83,22 +86,26 @@
                             $totalGeneral += intval($product->precio_total);
 
                             $quoteTechnique = optional(\App\Models\QuoteTechniques::where('quotes_id', $quote->id)->latest()->first());
+
+                            $quoteInformation = App\Models\QuoteInformation::where('id', $quote->id)->first();
+
+                            $productDB = \App\Models\Catalogo\Product::where('id',$productData->id)->get()->first();
+                            $productImage = $productDB->firstImage;
+
                         @endphp
                         
                         <tr class="border">
                             <td class="text-center"><b>SQ-{{$quote->id}}</b></td>
                             <td class="text-center">
                                 @if($quote->logo == null || $quote->logo == '')
-                                    Sin logo
+                                    <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
                                 @else
-                                    <img class="w-20" src="/storage/logos/{{$quote->logo}}" alt="logo">
+                                    <img class="" src="/storage/logos/{{$quote->logo}}" alt="logo" style="width: 100px;object-fit: contain;">
                                 @endif
                             </td>
                             <td class="text-center">{{$productName }}</td>
                             <td class="text-center">{{isset($quoteTechnique->technique)? $quoteTechnique->technique : ''}}</td>
                             <td>
-                                
-                              
                                 <p><b>Material: </b>  {{isset($quoteTechnique->material)? $quoteTechnique->material: ''}} </p>
                                 <p><b>Tamaño: </b>  {{isset($quoteTechnique->size)?  $quoteTechnique->size: '' }} </p>
                               </td>
@@ -115,13 +122,50 @@
                                     </button>
                                 </form>
 
-                                <form method="POST" action="{{ route('compras.realizarcompra') }}">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $quote->id }}">
-                                    <button type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold p-2 rounded text-sm">
+                                @if($quoteInformation && $quoteInformation->information == 'Info')
+                                    <!-- Modal toggle -->
+                                    <button data-modal-target="oc-modal-{{ $quote->id }}" data-modal-toggle="oc-modal-{{ $quote->id }}" class="w-full bg-primary hover:bg-primary text-white font-bold p-2 rounded text-sm" type="button">
                                         Confirmar compra
                                     </button>
-                                </form>
+                                    
+                                    <!-- Main modal -->
+                                    <div id="oc-modal-{{ $quote->id }}" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                        <div class="relative p-4 w-full max-w-2xl max-h-full">
+                                            <!-- Modal content -->
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                <form method="POST" action="{{ route('compras.realizarcompra') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $quote->id }}">
+                                                    <!-- Modal header -->
+                                                    <div class="flex justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                            Orden de compra
+                                                        </h3>
+                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="oc-modal-{{ $quote->id }}">
+                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="p-4 md:p-5 space-y-4 text-left">
+                                                        Para poder continuar con el proceso de compra, ingrese el número de Orden de Compra
+                                                        <br>
+                                                        <input type="text" name="oc" id="oc" class="w-full" required>
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                        <button type="submit" class="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar compra</button>
+                                                        <button data-modal-hide="oc-modal-{{ $quote->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cancelar</button>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                   
                             </td>
                         </tr>
                     @endforeach

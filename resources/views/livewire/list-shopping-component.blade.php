@@ -12,8 +12,9 @@
             <thead>
               <tr class="bg-blue-900 text-white">
                 <th style="width: 10%;" class="p-2">#</th>
-                <th style="width: 20%;">Poducto</th>
-                <th style="width: 25%;">Descripción</th>
+                <th style="width: 10%;">Imagen</th>
+                <th style="width: 15%;">Poducto</th>
+                <th style="width: 20%;">Descripción</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Total</th>
                 <th style="width: 10%;">Fecha de pedido</th>
@@ -25,13 +26,22 @@
             </thead>
             <tbody>
               @foreach ($shoppings  as $shopping)
+                @php
+                  $product = json_decode($shopping->products[0]->product, true);
+                  $productDB = \App\Models\Catalogo\Product::where('id',$product['id'])->get()->first();
+                  $productImage = $productDB->firstImage;
+                  $shoppingInformation = \App\Models\ShoppingInformation::where('id',$shopping->id)->get()->first();
+                @endphp
                 <tr class="border border-gray-300">
-                    <td class="text-center py-5 px-6">{{ $loop->iteration }}</td>
+                    <td class="text-center py-5 px-6">{{ $shoppingInformation->information }}</td>
                     <td class="text-center">
-                      @php
-                        $product = json_decode($shopping->products[0]->product, true);
-                      @endphp
-                      
+                      @if($product['logo'] != '')
+                        <img src="/storage/logos/{{$product['logo'] }}" alt="" style="width: 100px;object-fit: contain;">
+                      @else
+                        <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
+                      @endif
+                    </td>
+                    <td class="text-center">
                       {{ $product['name'] }}
                     </td>
                     <td>
@@ -41,7 +51,7 @@
                       {{ $shopping->products[0]->cantidad }}
                     </td>
                     <td class="text-center">
-                      {{ number_format($shopping->products[0]->precio_total, 2, '.', ',') }}
+                      <b>$ {{ number_format($shopping->products[0]->precio_total, 2, '.', ',') }}</b> 
                     </td>
                     <td class="text-center">
                       {{ $shopping->products[0]->updated_at->format('d-m-Y') }}
@@ -59,10 +69,91 @@
                             @break
                         @case(3)
                           <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Entregado</span>
-                            @break
+                           
+                          <!-- Modal toggle -->
+                          <button data-modal-target="rating-modal-{{$shopping->id}}" data-modal-toggle="rating-modal-{{$shopping->id}}"  class="block text-white bg-primary hover:bg-primary focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center ml-8 " type="button">
+                            Evaluar
+                          </button>
+
+                          <!-- Main modal -->
+                          <div id="rating-modal-{{$shopping->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                              <!-- Modal content -->
+                              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                    ¡Califica nuestro servicio!
+                                  </h3>
+                                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="rating-modal-{{$shopping->id}}">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Cerrar modal</span>
+                                  </button>
+                                </div>
+                              <!-- Modal body -->
+                              <div class="p-4 md:p-5 space-y-4">
+
+                                <p class="">
+                                  Valoramos tu experiencia con nuestro servicio y productos, por favor, tómate un momento para evaluarnos. Tu retroalimentación nos ayuda a mejorar y a seguir ofreciéndote la mejor atención posible. ¡Gracias por tu apoyo!
+                                </p>
+                                <br>
+                                <div class="flex items-center justify-center space-x-2">
+                                    <input type="hidden" name="rating" id="rating" value="0" class="hidden">
+
+                                    <label for="star{{$shopping->id}}1" id="star{{$shopping->id}}1s" class="text-2xl cursor-pointer" onclick="setRating(1, '{{$shopping->id}}')">&#9733;</label>
+                                    <input type="radio" id="star{{$shopping->id}}1"  name="star" value="1" class="hidden" />
+
+                                    <label for="star{{$shopping->id}}2" id="star{{$shopping->id}}2s" class="text-2xl cursor-pointer" onclick="setRating(2, '{{$shopping->id}}')">&#9733;</label>
+                                    <input type="radio" id="star{{$shopping->id}}2"  name="star" value="2" class="hidden" />
+
+                                    <label for="star{{$shopping->id}}3" id="star{{$shopping->id}}3s" class="text-2xl cursor-pointer" onclick="setRating(3, '{{$shopping->id}}')">&#9733;</label>
+                                    <input type="radio" id="star{{$shopping->id}}3"  name="star" value="3" class="hidden" />
+                                  
+                                    <label for="star{{$shopping->id}}4" id="star{{$shopping->id}}4s" class="text-2xl cursor-pointer" id="star{{$shopping->id}}4s" onclick="setRating(4, '{{$shopping->id}}')">&#9733;</label>
+                                    <input type="radio" id="star{{$shopping->id}}4"  name="star" value="4" class="hidden" />
+
+                                    <label for="star{{$shopping->id}}5" id="star{{$shopping->id}}5s"  class="text-2xl cursor-pointer" onclick="setRating(5, '{{$shopping->id}}')">&#9733;</label>
+                                    <input type="radio" id="star{{$shopping->id}}5"  name="star" value="5" class="hidden" />
+                                </div>
+                              </div>
+
+                              <!-- Modal footer -->
+                              <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button type="button" class="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Evaluar</button>
+                                <button data-modal-hide="rating-modal-{{$shopping->id}}"  type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cerrar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <script>
+
+                          function setRating(value, id) {
+                          
+                            initValue =`${id}${1}`;
+                            maxValue = `${id}${5}`;
+
+                            for (let i = 1; i <= value; i++) {
+                              star = document.getElementById(`star${id}${i}s`);
+                              star.style.color = '#F35A02';
+                            }
+
+                            for (let i = value + 1; i <= 5; i++) {
+                              star = document.getElementById(`star${id}${i}s`);
+                              star.style.color = '#000000';
+                            }
+                          }
+                        </script>
+                          @break
                         @default
                             
                       @endswitch
+                      <br>
+                      
+
+
                     </td>
                     @role('seller')
                       <td>
@@ -107,7 +198,7 @@
                                         </div>
 
                                         <div class="flex items-center p-4 md:p-5 ">
-                                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Actualizar</button>
+                                            <button type="submit" class="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Actualizar</button>
                                             <button data-modal-hide="edit-modal-{{$shopping->id}}"  type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
                                         </div>
 
@@ -136,6 +227,5 @@
         </div>
 
     </div>
-    
-    
+
 </div>
