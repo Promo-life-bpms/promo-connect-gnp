@@ -996,6 +996,9 @@ input:checked + .toggle-bg {
 .bottom-0 {
   bottom: 0px;
 }
+.bottom-4 {
+  bottom: 1rem;
+}
 .bottom-5 {
   bottom: 1.25rem;
 }
@@ -1016,6 +1019,9 @@ input:checked + .toggle-bg {
 }
 .right-2\.5 {
   right: 0.625rem;
+}
+.right-4 {
+  right: 1rem;
 }
 .top-0 {
   top: 0px;
