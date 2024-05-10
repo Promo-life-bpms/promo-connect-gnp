@@ -10,6 +10,7 @@ use App\Http\Controllers\ImageProxyController;
 use App\Http\Controllers\SellerController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\NotificacionesController;
+use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\TemporalImageUrlController;
 use Illuminate\Support\Facades\Route;
 
@@ -106,5 +107,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/catalogo/{product}', [CotizadorController::class, 'verProducto'])->name('show.product');
 
     Route::post('/export/user', [ExportDataController::class, 'exportUser'])->name('exportUser');
+    Route::post('/shopping/rate', [ShoppingController::class, 'shoppingRate'])->name('shoppingRate');
 
 });

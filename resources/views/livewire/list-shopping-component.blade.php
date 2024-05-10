@@ -92,38 +92,46 @@
                                     <span class="sr-only">Cerrar modal</span>
                                   </button>
                                 </div>
-                              <!-- Modal body -->
-                              <div class="p-4 md:p-5 space-y-4">
 
-                                <p class="">
-                                  Valoramos tu experiencia con nuestro servicio y productos, por favor, tómate un momento para evaluarnos. Tu retroalimentación nos ayuda a mejorar y a seguir ofreciéndote la mejor atención posible. ¡Gracias por tu apoyo!
-                                </p>
-                                <br>
-                                <div class="flex items-center justify-center space-x-2">
-                                    <input type="hidden" name="rating" id="rating" value="0" class="hidden">
+                                <form method="POST" action="{{ route('shoppingRate') }}">
+                                @csrf
 
-                                    <label for="star{{$shopping->id}}1" id="star{{$shopping->id}}1s" class="text-2xl cursor-pointer" onclick="setRating(1, '{{$shopping->id}}')">&#9733;</label>
-                                    <input type="radio" id="star{{$shopping->id}}1"  name="star" value="1" class="hidden" />
-
-                                    <label for="star{{$shopping->id}}2" id="star{{$shopping->id}}2s" class="text-2xl cursor-pointer" onclick="setRating(2, '{{$shopping->id}}')">&#9733;</label>
-                                    <input type="radio" id="star{{$shopping->id}}2"  name="star" value="2" class="hidden" />
-
-                                    <label for="star{{$shopping->id}}3" id="star{{$shopping->id}}3s" class="text-2xl cursor-pointer" onclick="setRating(3, '{{$shopping->id}}')">&#9733;</label>
-                                    <input type="radio" id="star{{$shopping->id}}3"  name="star" value="3" class="hidden" />
+                                <input type="text" name="shopping_id" id="shopping_id" hidden  value="{{$shopping->id}}">
+                                <!-- Modal body -->
+                                <div class="p-4 md:p-5 space-y-4">
+                                  <p class="">
+                                    Valoramos tu experiencia con nuestro servicio y productos, por favor, tómate un momento para evaluarnos. Tu retroalimentación nos ayuda a mejorar y a seguir ofreciéndote la mejor atención posible. ¡Gracias por tu apoyo!aaaa
+                                  </p>
+                                  <br>
                                   
-                                    <label for="star{{$shopping->id}}4" id="star{{$shopping->id}}4s" class="text-2xl cursor-pointer" id="star{{$shopping->id}}4s" onclick="setRating(4, '{{$shopping->id}}')">&#9733;</label>
-                                    <input type="radio" id="star{{$shopping->id}}4"  name="star" value="4" class="hidden" />
+                                  <div class="flex items-center justify-center space-x-2">
+                                      <input type="hidden" name="rating" id="rating" value="0" class="hidden">
 
-                                    <label for="star{{$shopping->id}}5" id="star{{$shopping->id}}5s"  class="text-2xl cursor-pointer" onclick="setRating(5, '{{$shopping->id}}')">&#9733;</label>
-                                    <input type="radio" id="star{{$shopping->id}}5"  name="star" value="5" class="hidden" />
+                                      <label for="star{{$shopping->id}}1" id="star{{$shopping->id}}1s" class="text-2xl cursor-pointer" onclick="setRating(1, '{{$shopping->id}}')">&#9733;</label>
+                                      <input type="radio" id="star{{$shopping->id}}1"  name="star" value="1" class="hidden" />
+
+                                      <label for="star{{$shopping->id}}2" id="star{{$shopping->id}}2s" class="text-2xl cursor-pointer" onclick="setRating(2, '{{$shopping->id}}')">&#9733;</label>
+                                      <input type="radio" id="star{{$shopping->id}}2"  name="star" value="2" class="hidden" />
+
+                                      <label for="star{{$shopping->id}}3" id="star{{$shopping->id}}3s" class="text-2xl cursor-pointer" onclick="setRating(3, '{{$shopping->id}}')">&#9733;</label>
+                                      <input type="radio" id="star{{$shopping->id}}3"  name="star" value="3" class="hidden" />
+                                    
+                                      <label for="star{{$shopping->id}}4" id="star{{$shopping->id}}4s" class="text-2xl cursor-pointer" id="star{{$shopping->id}}4s" onclick="setRating(4, '{{$shopping->id}}')">&#9733;</label>
+                                      <input type="radio" id="star{{$shopping->id}}4"  name="star" value="4" class="hidden" />
+
+                                      <label for="star{{$shopping->id}}5" id="star{{$shopping->id}}5s"  class="text-2xl cursor-pointer" onclick="setRating(5, '{{$shopping->id}}')">&#9733;</label>
+                                      <input type="radio" id="star{{$shopping->id}}5"  name="star" value="5" class="hidden" />
+                                  </div>
                                 </div>
-                              </div>
+                                
+                                <!-- Modal footer -->
+                                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                  <button type="submit" class="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Evaluar</button>
+                                  <button data-modal-hide="rating-modal-{{$shopping->id}}"  type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cerrar</button>
+                                </div>
 
-                              <!-- Modal footer -->
-                              <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <button type="button" class="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Evaluar</button>
-                                <button data-modal-hide="rating-modal-{{$shopping->id}}"  type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cerrar</button>
-                              </div>
+                              </form>
+                              
                             </div>
                           </div>
                         </div>
