@@ -205,8 +205,17 @@
 
                                     <div class="grid grid-cols-3 gap-4">
                                         <select id="logos" name="logos" class=" mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" style="width: 210px;">
-                                            <option value="Logo_GNP.png">LOGO GNP</option>
-                                            <option value="vivir_orange.png">VIVIR  NARANJA</option>
+                                            <option value="AgenteGNP.png">Agente GNP</option>
+                                            <option value="ArenaGNP.png">Arena GNP</option>
+                                            <option value="Bienestarorganizacional.png">Bienestar organizacional</option>
+                                            <option value="LogodeGNP.jpeg">Logo de GNP</option>
+                                            <option value="LOGOEMPRESARIALES.jpg">LOGO EMPRESARIALES</option>
+                                            <option value="LOGOVIDA.png">LOGO VIDA</option>
+                                            <option value="Logoysloganennegro.jpg">Logo y slogan en negro</option>
+                                            <option value="Potros.png">Potros</option>
+                                            <option value="ViviresincreíbleAzul.png">Vivir es increíble Azul</option>
+                                            <option value="ViviresincreíbleNaranja.png">Vivir es increíble Naranja</option>
+                                            <option value="Vivirunidosesincreíblenaranja.jpg">Vivir unidos es increíble Naranja</option>
                                         </select>
                                     </div>
                                     
@@ -411,8 +420,17 @@
         var productID = "{{ $product->id }}";
 
         /* Logos */
-        var logo1 = "{{asset('img/Logo_GNP.png')}}";
-        var logo2 = "{{asset('img/vivir_orange.png')}}";
+        var logo1 = "{{asset('img/AgenteGNP.png')}}";
+        var logo2 = "{{asset('img/ArenaGNP.png')}}";
+        var logo3 = "{{asset('img/Bienestarorganizacional.png')}}";
+        var logo4 = "{{asset('img/LogodeGNP.jpeg')}}";
+        var logo5 = "{{asset('img/LOGOEMPRESARIALES.jpg')}}";
+        var logo6 = "{{asset('img/LOGOVIDA.png')}}";
+        var logo7 = "{{asset('img/Logoysloganennegro.jpg')}}";
+        var logo8 = "{{asset('img/Potros.png')}}";
+        var logo9 = "{{asset('img/ViviresincreíbleAzul.png')}}";
+        var logo10 = "{{asset('img/ViviresincreíbleNaranja.png')}}";
+        var logo11 = "{{asset('img/Vivirunidosesincreíblenaranja.jpg')}}";
 
         if(imageURL.startsWith("https://catalogodeproductos.promolife.lat/")){
             imageURL = imageURL.slice(41);
@@ -420,7 +438,15 @@
         /* Identificadores */
         var selectedLogo1 = document.getElementById("logo1");
         var selectedLogo2 = document.getElementById("logo2");
-      
+        var selectedLogo3 = document.getElementById("logo3");
+        var selectedLogo4 = document.getElementById("logo4");
+        var selectedLogo5 = document.getElementById("logo5");
+        var selectedLogo6 = document.getElementById("logo6");
+        var selectedLogo7 = document.getElementById("logo7");
+        var selectedLogo8 = document.getElementById("logo8");
+        var selectedLogo9 = document.getElementById("logo9");
+        var selectedLogo10 = document.getElementById("logo10");
+        var selectedLogo11 = document.getElementById("logo11");
 
         var logoSelect = document.getElementById("logos");
         
