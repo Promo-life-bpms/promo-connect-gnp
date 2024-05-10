@@ -6,46 +6,78 @@
                     <input wire:model='keyWord' type="text" class="form-control" name="search" id="search"
                         placeholder="Buscar">
                 </div> --}}
-
-                <div class="bg-white container mx-auto h-auto max-w-7xl grid md:grid-cols-2 p-3 gap-y-2">
-                    <h1 class="text-2xl lg:text-4xl md:col-span-2 font-[600] md:font-[700] md:px-4 lg:px-32">
+                <div class="flex justify-between">
+                    <h1 class="text-2xl ml-10">
                         USUARIOS
                     </h1>
-                    <div class="md:col-end-3 col-span-1 lg:px-12 lg:ml-40">
-                        <label for="default-search"
-                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <div>
+                        <div>
+                            <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                                Importar usuarios
+                              </button>
+                              
+                              <!-- Main modal -->
+                              <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                  <div class="relative p-4 w-full max-w-2xl max-h-full">
+                                      <!-- Modal content -->
+                                      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                          <!-- Modal header -->
+                                          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                  Importar usuarios
+                                              </h3>
+                                              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                                                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                  </svg>
+                                                  <span class="sr-only">Close modal</span>
+                                              </button>
+                                          </div>
+                                          <!-- Modal body -->
+                                          <div class="p-4 md:p-5 space-y-4">
+                                            <form action="{{ route('exportUser') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <p>Seleccionar archivo:</p>
+                                                <input type="file" name="excel" id="excel" accept=".xlsx, .xls">
+                                                <br>
+                                                <button type="submit">Enviar</button>
+                                            </form>
+                                          </div>
+                                          
+                                      </div>
+                                  </div>
+                              </div>                          
+                        </div>
+
+                        <div class="md:col-end-3 col-span-1 lg:px-12 lg:ml-40">
+                            <label for="default-search"
+                                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                </div>
+                                <input type="search"
+                                    class="border-2 lg:block border-gray-400 py-2 text-sm bg-white rounded-md pr-10 pl-2 focus:outline-none focus:bg-white focus:text-gray-900 w-full"
+                                    placeholder="Buscar..." autocomplete="off" name="busqueda" wire:model="search">
+                                <span class="absolute inset-y-0 right-0 flex items-center pr-2">
+                                    <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                        </svg>
+                                    </button>
+                                </span>
                             </div>
-                            <input type="search"
-                                class="border-2 lg:block border-gray-400 py-2 text-sm bg-white rounded-md pr-10 pl-2 focus:outline-none focus:bg-white focus:text-gray-900 w-full"
-                                placeholder="Buscar..." autocomplete="off" name="busqueda" wire:model="search">
-                            <span class="absolute inset-y-0 right-0 flex items-center pr-2">
-                                <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
-                                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                    </svg>
-                                </button>
-                            </span>
                         </div>
                     </div>
-                    <div class="relative overflow-x-auto md:col-span-2  lg:mx-32 lg:mt-2 ">
+                </div>
+                <div class="bg-white container h-auto pt-4">
+                   
+                    
+                    <div class="relative overflow-x-auto md:col-span-2 ">
                         <div class="relative" wire:loading.class="opacity-70">
-                            <div class="absolute top-5 w-full">
-                                <div wire:loading.flex class="justify-center">
-                                    <div class="sk-chase">
-                                        <div class="sk-chase-dot"></div>
-                                        <div class="sk-chase-dot"></div>
-                                        <div class="sk-chase-dot"></div>
-                                        <div class="sk-chase-dot"></div>
-                                        <div class="sk-chase-dot"></div>
-                                        <div class="sk-chase-dot"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-white uppercase bg-secondary">
+                            
+                            <table class="w-full text-sm text-left text-gray-500 ">
+                                <thead class="text-xs text-white uppercase bg-primary">
                                     <tr>
                                         <th scope="col" class="px-6 py-3">
                                             NOMBRE

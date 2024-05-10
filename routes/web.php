@@ -5,6 +5,7 @@ use App\Http\Controllers\APIController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CotizacionController;
 use App\Http\Controllers\CotizadorController;
+use App\Http\Controllers\ExportDataController;
 use App\Http\Controllers\ImageProxyController;
 use App\Http\Controllers\SellerController;
 use Illuminate\Support\Facades\Auth;
@@ -102,5 +103,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/special/update', [CotizacionController::class, 'specialUpdate'])->name('specialUpdate');
 
+    Route::get('/catalogo/{product}', [CotizadorController::class, 'verProducto'])->name('show.product');
+
+    Route::post('/export/user', [ExportDataController::class, 'exportUser'])->name('exportUser');
 
 });
