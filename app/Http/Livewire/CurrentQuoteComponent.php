@@ -238,11 +238,20 @@ class CurrentQuoteComponent extends Component
 
         foreach($cotizacionActual as $cotizacion){
 
+            $current_quote_more_details = json_decode($cotizacion->more_details);
+           
             $cotizacion_techniques = CurrentQuotesTechniques::where('current_quotes_details_id', $cotizacion->id)->get()->first();
 
             $product = Product::find($cotizacion->product_id);
-            
-            $product->logo = $cotizacion->logo;       
+       
+            $product->logo = $cotizacion->logo;  
+              
+            if( $current_quote_more_details != null){
+                $product->embalaje = $current_quote_more_details[0]->embalaje;  
+                $product->armado = $current_quote_more_details[0]->armado;    
+                $product->destino = $current_quote_more_details[0]->destino;    
+                $product->detalles = $current_quote_more_details[0]->detalles;    
+            }
 
             if($product){
                 $createQuote = new Quote(); 
