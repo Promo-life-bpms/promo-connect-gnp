@@ -126,10 +126,38 @@
                     <tr>
                         <td colspan="1" style="width:35%">
                 
-                            <p> <b>Embalaje: </b>  {{ isset($productData->embalaje)? 'Si': 'No' }} </p>
-                            <p> <b>Armado: </b>  {{ isset($productData->armado)? 'Si': 'No' }} </p>
-                            <p> <b>Destino: </b>  {{ isset($productData->destino)? 'Si': 'No' }} </p>
-                            <p> <b>Detalles: </b>  {{ isset($productData->detalles)? $productData->detalles: 'Sin detalles adicionales' }} </p>
+                            <p> 
+                                <b>Embalaje: </b>  
+                                @if(isset($productData->embalaje) && $productData->embalaje != 0)
+                                Si
+                                @else
+                                No
+                                @endif
+                            </p>
+                            <p> 
+                                <b>Armado: </b>   
+                                @if(isset($productData->embalaje) && $productData->embalaje != 0)
+                                Si
+                                @else
+                                No
+                                @endif
+                            </p>
+                            <p> 
+                                <b>Destino: </b>  
+                                @if(isset($productData->destino) && $productData->destino != 0)
+                                Si
+                                @else
+                                No
+                                @endif
+                            </p>
+                            <p> 
+                                <b>Detalles: </b>  
+                                @if(isset($productData->detalles) && $productData->detalles != '')
+                                Si
+                                @else
+                                No
+                                @endif
+                            </p>
 
                         </td>
                         <td colspan="2" style="width:35%">

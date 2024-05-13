@@ -9,11 +9,11 @@ class ShoppingController extends Controller
 {
     public function shoppingRate(Request $request) {
 
-        DB::table('shopping_information')->where('id', $request->id)->update([
+        DB::table('shopping_information')->where('id', $request->shopping_id)->update([
             'rank' => $request->star,
             'oportunity' => 'Completado',
         ]);
        
-        return back()->with('mensaje', 'Evaluación completada');
+        return back()->with('message', '¡Evaluación completada, muchas gracias!');
     }
 }

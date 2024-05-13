@@ -7,6 +7,12 @@
             <a class="text-secondary" href="#">Mis compras</a>
         </div>
       </div>
+
+      @if(session('message'))
+        <div class="bg-green-500 text-white px-4 py-2 rounded-md my-4">
+            {{ session('message') }}
+        </div>
+      @endif
       
         <table class="w-full table-auto">
             <thead>
@@ -70,11 +76,15 @@
                         @case(3)
                           <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Entregado</span>
                            
-                          <!-- Modal toggle -->
-                          <button data-modal-target="rating-modal-{{$shopping->id}}" data-modal-toggle="rating-modal-{{$shopping->id}}"  class="block text-white bg-primary hover:bg-primary focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center ml-8 " type="button">
-                            Evaluar
-                          </button>
+                          @if($shoppingInformation->oportunity == 'Completado')
+                            <br>
+                            <span class="bg-orange-100 text-orange-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Evaluado</span>
+                          @else
+                            <button data-modal-target="rating-modal-{{$shopping->id}}" data-modal-toggle="rating-modal-{{$shopping->id}}"  class="block text-white bg-primary hover:bg-primary focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center ml-8 " type="button">
+                              Evaluar
+                            </button>
 
+                          @endif
                           <!-- Main modal -->
                           <div id="rating-modal-{{$shopping->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative p-4 w-full max-w-2xl max-h-full">
