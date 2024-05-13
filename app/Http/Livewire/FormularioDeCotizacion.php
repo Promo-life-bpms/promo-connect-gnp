@@ -30,6 +30,8 @@ class FormularioDeCotizacion extends Component
 
     public $priceScales, $infoScales = [], $priceScalesComplete = [],  $cantidadEscala, $precioTecnicaEscala, $editScale = false, $itemEditScale = null;
 
+    public $detalles, $embalaje, $armado, $destino;
+
     public $materialSeleccionado;
     public $tecnicaSeleccionada;
     public $sizeSeleccionado;
@@ -239,6 +241,15 @@ class FormularioDeCotizacion extends Component
 
         $currentQuote = auth()->user()->currentQuote;
 
+        $more_detail = [];
+
+        array_push( $more_detail, (object)[
+            'embalaje' => isset($this->embalaje)? 1:0,
+            'armado'  => isset($this->armado)? 1:0,
+            'destino' => isset($this->destino)? 1:0,
+            'detalles' => $this->detalles != ""? $this->detalles : "",
+        ]);
+
         if ($currentQuote === null) {
 
             $currentQuote = auth()->user()->currentQuote()->create([
@@ -247,7 +258,7 @@ class FormularioDeCotizacion extends Component
         } else {
             if (auth()->user()->currentQuote) {
                 auth()->user()->currentQuote->discount = false;
-                auth()->user()->currentQuote->type = null;
+                auth()->user()->currentQuote->type =  null;
                 auth()->user()->currentQuote->value = null;
                 auth()->user()->currentQuote->save();
             }
@@ -273,10 +284,7 @@ class FormularioDeCotizacion extends Component
             'precio_unitario' => $this->costoCalculado,
             'precio_total' => $this->costoTotal,
             'logo' => $imageName,
-            'embalaje' => '1',
-            'armado'  => '1',
-            'destino' => '1',
-            
+            'more_details' => json_encode($more_detail)
         ];
 
         $createCurrentQuote =  $currentQuote->currentQuoteDetails()->create($dataQuote);
