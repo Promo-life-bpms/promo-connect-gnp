@@ -153,7 +153,7 @@
                             <p> 
                                 <b>Detalles: </b>  
                                 @if(isset($productData->detalles) && $productData->detalles != '')
-                                Si
+                                    {{$productData->detalles}}
                                 @else
                                 No
                                 @endif

@@ -66,10 +66,8 @@ class CotizacionController extends Controller
     {
 
         $date =  Carbon::now()->format("d/m/Y");
-
-        $user = auth()->user();
-        $quotes = Quote::where('user_id', $user->id)->where('id',$request->id)->get();
-        
+        $quotes = Quote::where('id',$request->id)->get();
+      
         $recipients = [
             'daniel@trademarket.com.mx',
             'ugamboa@medix.com.mx',

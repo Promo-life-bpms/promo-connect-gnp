@@ -47,7 +47,7 @@ class SendEmailCotizationNotification extends Notification
                 'quotes' =>  $this->quotes 
             ])
             ->subject('Cotización')
-            ->from('cotizaciones@promolife.com.mx', 'Cotización');
+            ->from('cotizaciones@trademarket.com.mx', 'Cotización');
     }
 
     /**

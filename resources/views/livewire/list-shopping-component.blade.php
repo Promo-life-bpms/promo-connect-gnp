@@ -120,7 +120,7 @@
                                 <!-- Modal body -->
                                 <div class="p-4 md:p-5 space-y-4">
                                   <p class="">
-                                    Valoramos tu experiencia con nuestro servicio y productos, por favor, tómate un momento para evaluarnos. Tu retroalimentación nos ayuda a mejorar y a seguir ofreciéndote la mejor atención posible. ¡Gracias por tu apoyo!aaaa
+                                    Valoramos tu experiencia con nuestro servicio y productos, por favor, tómate un momento para evaluarnos. Tu retroalimentación nos ayuda a mejorar y a seguir ofreciéndote la mejor atención posible. ¡Gracias por tu apoyo!
                                   </p>
                                   <br>
                                   
