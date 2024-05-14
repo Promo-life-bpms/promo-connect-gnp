@@ -19,11 +19,12 @@
               <tr class="bg-blue-900 text-white">
                 <th style="width: 10%;" class="p-2">#</th>
                 <th style="width: 10%;">Imagen</th>
-                <th style="width: 15%;">Poducto</th>
+                <th style="width: 10%;">Producto</th>
                 <th style="width: 20%;">Descripción</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Total</th>
                 <th style="width: 10%;">Fecha de pedido</th>
+                <th style="width: 10%;">Fecha de entrega</th>
                 <th style="width: 10%;">Status</th>
                 @role('seller')
                   <th style="width: 5%;"></th>   
@@ -60,7 +61,16 @@
                       <b>$ {{ number_format($shopping->products[0]->precio_total, 2, '.', ',') }}</b> 
                     </td>
                     <td class="text-center">
-                      {{ $shopping->products[0]->updated_at->format('d-m-Y') }}
+                      {{ $shopping->products[0]->created_at->format('d-m-Y') }}
+                    </td>
+                    <td class="text-center">
+                      @if($shopping->status == 3)
+                        <p>Entregado el </p>
+                        {{ $shopping->products[0]->updated_at->format('d-m-Y') }}
+                      @else
+                        10 días hábiless
+                      @endif
+                     
                     </td>
                     <td class="text-center">
                       @switch($shopping->status)
