@@ -11,7 +11,7 @@
         {{-- <img src="quotesheet/pl/fondo-azul-superior.png" alt="" srcset="" class="fondo-head"> --}}
         <div class="fondo-head"></div>
         <div class="content" style="text-align: right">
-            <img style="width:250px; height:170px; object-fit: contain;" src="{{asset('img/promolife.png')}}" class="logo">
+            <img style="width:250px; height:100px; object-fit: fit;" src="img/promolife-logo.png" class="logo">
         </div>
         <div class="content">
             <div style="margin-top: -80px;">
@@ -157,7 +157,7 @@
                                 @else
                                 No
                                 @endif
-                            </p>
+                            </p> 
 
                         </td>
                         <td colspan="2" style="width:35%">
