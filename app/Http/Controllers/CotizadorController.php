@@ -571,12 +571,15 @@ class CotizadorController extends Controller
         ]);
         $date = Carbon::now()->format("d/m/Y");
 
-        $emails = [
+        /* $emails = [
             auth()->user()->email, 
             'maria.maldonado@gnp.com.mx',    
             'jaime.gonzalez@promolife.com.mx' 
-        ];
+        ]; */
         
+        $emails = [
+            'federico.solano@promolife.com.mx' 
+        ];
         foreach ($emails as $email) {
             try {
                 Notification::route('mail', $email)
