@@ -21,10 +21,11 @@ Fecha: **{{ $date }}**
 
         $productName = isset($productData->name) ? $productData->name : 'Nombre no disponible';
         
-            
+        $quoteInformation = \App\Models\QuoteInformation::where('id',$quotes->id)->get()->first();
+
     @endphp
 
-#Compra: **SQ-{{ $quotes->id }}**
+#Compra: **{{ isset($quoteInformation->information)? $quoteInformation->information: '' }}**
 
 ## Descripción
 {{ $productName }}
