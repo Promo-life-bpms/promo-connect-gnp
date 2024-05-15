@@ -143,10 +143,10 @@
                                     Solicitar Muestra
                                 </button>
                             @endif
-                            <button type="button" onclick='eliminar({{ $quote->id }})'
-                                class="block w-full text-center text-sm underline rounded-sm font-semibold py-1 px-4">
-                                Eliminar del carrito
-                            </button>
+                                <button type="button" onclick='eliminar({{ $quote->id }})'
+                                    class="block w-full text-center text-sm underline rounded-sm font-semibold py-1 px-4">
+                                    Eliminar del carrito
+                                </button>
                         </div>
                     </div>
                 @endforeach

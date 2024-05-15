@@ -29,7 +29,7 @@
                 class="pagenum"></span> </p>
         <table
             style="magin-bottom: 0mm; position: absolute; bottom: 27mm; z-index: 10; width: 100%;background-color: rebeccapurple">
-            {{-- {{ dd(1) }} --}}
+            
             <tr style="background-color: rebeccapurple">
                 <td style="background-color: rebeccapurple">
                     <div class="url"style="font-size: 15px; color:#fff ;">

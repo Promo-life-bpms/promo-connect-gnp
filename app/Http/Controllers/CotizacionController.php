@@ -67,12 +67,6 @@ class CotizacionController extends Controller
 
         $date =  Carbon::now()->format("d/m/Y");
         $quotes = Quote::where('id',$request->id)->get();
-      
-        $recipients = [
-            'daniel@trademarket.com.mx',
-            'ugamboa@medix.com.mx',
-            'jsantos@medix.com.mx',
-        ];
 
         $pdf = \PDF::loadView('pages.pdf.promolife', ['date' => $date, 'quotes' => $quotes]);
         $pdf->setPaper('Letter', 'portrait');

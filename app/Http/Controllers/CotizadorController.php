@@ -574,7 +574,7 @@ class CotizadorController extends Controller
         $emails = [
             auth()->user()->email, 
             'maria.maldonado@gnp.com.mx',    
-            'daniel@trademarket.com.mx' 
+            'jaime.gonzalez@promolife.com.mx' 
         ];
         
         foreach ($emails as $email) {
