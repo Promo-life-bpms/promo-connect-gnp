@@ -36,6 +36,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use Livewire\WithPagination;
 use SimpleXMLElement;
@@ -474,10 +475,10 @@ class CotizadorController extends Controller
     public function misCotizaciones()
     {
      
-        if(auth()->user()->hasRole( "buyers-manager")){
-            $quotes = Quote::simplePaginate(10);
-        }else{
-            $quotes =  auth()->user()->quotes()->simplePaginate(10);
+        if (auth()->user()->hasRole("buyers-manager")) {
+            $quotes = Quote::orderBy('created_at', 'desc')->simplePaginate(10);
+        } else {
+            $quotes = auth()->user()->quotes()->orderBy('created_at', 'desc')->simplePaginate(10);
         }
     
         return view('pages.catalogo.misCotizaciones', compact('quotes'));
@@ -570,12 +571,21 @@ class CotizadorController extends Controller
         ]);
         $date = Carbon::now()->format("d/m/Y");
 
-       /*  $user = auth()->user(); 
-        $userEmail = $user->email; 
+        $emails = [
+            auth()->user()->email, 
+            'maria.maldonado@gnp.com.mx',    
+            'daniel@trademarket.com.mx' 
+        ];
+        
+        foreach ($emails as $email) {
+            try {
+                Notification::route('mail', $email)
+                            ->notify(new SendEmailCotizationNotification($date, $quote));
+            } catch (\Exception $e) {
+                Log::error('Error enviando correo a ' . $email . ': ' . $e->getMessage());
+            }
+        }
 
-        Notification::route('mail', $userEmail)
-            ->notify(new SendEmailCotizationNotification($date, $quote)); */
-            
         return redirect()->back()->with('message', 'Este es tu mensaje de sesión.');
 
     }
