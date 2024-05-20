@@ -6,6 +6,14 @@
                     <input wire:model='keyWord' type="text" class="form-control" name="search" id="search"
                         placeholder="Buscar">
                 </div> --}}
+
+                @if(session('msg'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <strong class="font-bold">¡Éxito!</strong>
+                        <span class="block sm:inline">{{ session('msg') }}</span>
+                    </div>
+                @endif
+                
                 <div class="flex justify-between">
                     <h1 class="text-2xl ml-10">
                         USUARIOS
@@ -112,10 +120,64 @@
                                                 1
                                             </td>
                                             <td class="">
+                                                
+                                                <button data-modal-target="password-modal-{{$user->id}}" data-modal-toggle="password-modal-{{$user->id}}" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                                                    Cambiar contraseña
+                                                </button>
+                                                
+                                                <div id="password-modal-{{$user->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                    <div class="relative p-4 w-full max-w-2xl max-h-full">
+                                                        <!-- Modal content -->
+                                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                            <!-- Modal header -->
+                                                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                                    {{ $user->name }}
+                                                                </h3>
+                                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="password-modal-{{$user->id}}">
+                                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                                    </svg>
+                                                                    <span class="sr-only">Close modal</span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- Modal body -->
+                                                            
+                                                            <div class="p-4 md:p-5 space-y-4">
+                                                                <p class="text-base">Asignar contraseña manualmente</p>
+                                                                
+                                                                <form action="{{ route('admin.changeManualPassword') }}" method="POST" class="w-full">
+                                                                    @csrf
+                                                                    <div class="flex space-x-2 w-full">
+                                                                        <input type="text" name="user_id" value="{{ $user->id }}" hidden>
+                                                                        <input type="text" placeholder="Ingrese contraseña nueva" name="password" class="w-7/10 p-2 border border-gray-300 rounded-lg">
+                                                                        <button type="submit" class="w-3/10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Cambiar</button>
+                                                                    </div>
+                                                                </form>
+
+                                                                <form action="{{ route('admin.changeAutomaticPassword') }}" method="POST" class="w-full">
+                                                                    @csrf
+                                                                    <div class="mt-10">
+                                                                        <input type="text" name="user_id" value="{{ $user->id }}" hidden>
+                                                                        <p class="text-base">Asignación automática</p>
+                                                                        <button type="submit" class="w-3/10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2">Cambiar automaticamente</button>
+                                                                    </div>
+                                                                </form>                
+
+                                                            </div>
+
+                                                            <!-- Modal footer -->
+                                                            <div class="flex items-center p-4 md:p-5 rounded-b dark:border-gray-600">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
 
                                                 <a href="/admin/users/{{ $user->id }}">
-                                                    <button class="bg-[#2B2D2F] text-white h-[50px] w-full px-1">GENERAR
-                                                        REPORTE</button>
+                                                    <button class="bg-[#2B2D2F] text-white h-[50px] w-30 px-1 text-xs">Generar reporte</button>
                                                 </a>
                                             </td>
                                         </tr>

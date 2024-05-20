@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\ChatEvent;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CotizacionController;
@@ -94,6 +95,10 @@ Route::middleware(['auth'])->group(function () {
         // Route::view('muestra', 'livewire.muestras.index')->middleware('auth');
         Route::view('muestras', 'livewire.companies.index')->middleware('auth');
         Route::get('/settings', [CotizadorController::class, 'settings'])->name('settings');
+
+        Route::post('/change/manual-password', [AdminController::class, 'changeManualPassword'])->name('admin.changeManualPassword');
+        Route::post('/change/automatic-password', [AdminController::class, 'changeAutomaticPassword'])->name('admin.changeAutomaticPassword');
+
     });
     
     Route::post('/generar-cotizacion', [CotizacionController::class, 'generarPDF'])->name('generarPDF');
