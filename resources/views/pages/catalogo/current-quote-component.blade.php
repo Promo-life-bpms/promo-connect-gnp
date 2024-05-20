@@ -234,7 +234,7 @@
                 </div>
     
                 {{-- Nombre --}}
-                <div class="col-span-1 py-2 text-left">
+                <div class="col-span-1 py-2 text-left  @if($type_sample == 'virtual sin logotipo' || $type_sample == 'virtual con logotipo') hidden @endif">
                     <label for="nombre">Nombre: </label>
                 </div>
                 <div class="col-span-2 py-2 flex flex-col @if($type_sample == 'virtual sin logotipo' || $type_sample == 'virtual con logotipo') hidden @endif">
@@ -260,7 +260,7 @@
                     <label for="direcion">Direccion: </label>
                 </div>
                 <div class="col-span-2 py-2 @if($type_sample == 'virtual sin logotipo' || $type_sample == 'virtual con logotipo') hidden @endif">
-                    <textarea name="" id="" cols="10" rows="3" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" wire:model="direccion"></textarea>
+                    <textarea name="direccion" id="direccion" cols="10" rows="3" class="mt-1 block w-full border-gray-200 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-stone-50 text-stone-500" wire:model="direccion" readonly>Corporativo GNP</textarea>
                     @error('direccion')
                     <span>{{ $message }}</span>
                     @enderror

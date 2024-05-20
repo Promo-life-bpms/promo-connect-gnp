@@ -567,7 +567,7 @@ class CotizadorController extends Controller
         }
 
         DB::table('quote_information')->where('id',$request->id)->update([
-            'information' => strtoupper($request->oc),
+            'information' => strtoupper($request->type_order == ''? 'GNP':$request->type_order. '-'.$request->oc),
         ]);
         $date = Carbon::now()->format("d/m/Y");
 

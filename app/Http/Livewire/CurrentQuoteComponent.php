@@ -37,7 +37,7 @@ class CurrentQuoteComponent extends Component
     public $value, $type;
     public $quoteEdit, $quoteShow;
 
-    public $nombre, $telefono, $direccion, $quote_id, $type_sample;
+    public $nombre, $telefono, $direccion = 'Corporativo GNP', $quote_id, $type_sample;
 
     public $pdfDescargado = false;
     

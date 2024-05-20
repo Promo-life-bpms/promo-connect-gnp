@@ -43,16 +43,19 @@
                 <thead class="text-xs text-white uppercase bg-secondary">
                     <tr>
                         <th scope="col" class="px-3 py-2 md:px-6  md:py-3">
-                            PRODUCTO
+                            Producto
                         </th>
                         <th scope="col" class="px-3 py-2 md:px-6  md:py-3">
-                            DIRECCIÓN
+                            Dirección
                         </th>
                         <th scope="col" class="px-3 py-2 md:px-6  md:py-3">
-                            ESTATUS
+                            Estatus
                         </th>
                         <th scope="col" class="px-3 py-2 md:px-6  md:py-3">
-                            FECHA
+                            Fecha de solicitud
+                        </th>
+                        <th scope="col" class="px-3 py-2 md:px-6  md:py-3">
+                            Fecha de entrega
                         </th>
                         <th scope="col" class="px-3 py-2 md:px-6  md:py-3">
                         </th>
@@ -69,11 +72,34 @@
                                 {{ Str::limit($muestra->address, 20, '...') }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $muestra->status }}
+                                @switch($muestra->status)
+
+                                    @case(1)
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Solicitud recibida</span>
+                                        @break
+                        
+                                    @case(2)
+                                        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Muestra enviada</span>
+                                        @break
+                    
+                                    @case(3)
+                                        <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Muestra entregada</span>
+                                        @break
+
+                                    @case(4)
+                                        <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Envío cancelada</span>
+                                        @break
+                    
+                                    @default
+                                        <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Desconocido</span>
+                                
+                                @endswitch
+                               
                             </td>
                             <td class="px-6 py-4">
                                 {{ $muestra->created_at->format('d/m/Y') }}
                             </td>
+                            <td></td>
                             <td class="w-[13%]">
                                 <a href="{{ route('procesoMuestra', ['id' => $muestra->id]) }}">
                                     <button class="bg-primary text-white h-[50px] w-full px-2 ">VER MUESTRA </button>

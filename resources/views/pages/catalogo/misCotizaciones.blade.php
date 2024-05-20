@@ -154,9 +154,15 @@
                                                         </div>
                                                         <!-- Modal body -->
                                                         <div class="p-4 md:p-5 space-y-4 text-left">
-                                                            Para poder continuar con el proceso de compra, ingrese el número de Orden de Compra
+                                                            Para poder continuar con el proceso de compra, seleccione el tipo y número de orden.
                                                             <br>
-                                                            <input type="text" name="oc" id="oc" class="w-full" required>
+                                                            <div class="flex items-center space-x-4">
+                                                                <select id="type_order" name="type_order" class="form-select">
+                                                                    <option value="GNP" selected>GNP</option>
+                                                                    <option value="OC">OC</option>
+                                                                </select>
+                                                                <input type="text" name="oc" id="oc" class="w-full form-input" required>
+                                                            </div>
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
