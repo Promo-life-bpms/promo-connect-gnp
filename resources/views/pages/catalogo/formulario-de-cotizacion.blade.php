@@ -205,17 +205,15 @@
 
                                     <div class="grid grid-cols-3 gap-4">
                                         <select id="logos" name="logos" class=" mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" style="width: 210px;">
-                                            <option value="AgenteGNP.png">Agente GNP</option>
-                                            <option value="ArenaGNP.png">Arena GNP</option>
-                                            <option value="Bienestarorganizacional.png">Bienestar organizacional</option>
-                                            <option value="LogodeGNP.jpeg">Logo de GNP</option>
-                                            <option value="LOGOEMPRESARIALES.jpg">LOGO EMPRESARIALES</option>
-                                            <option value="LOGOVIDA.png">LOGO VIDA</option>
-                                            <option value="Logoysloganennegro.jpg">Logo y slogan en negro</option>
+                                            <option value="Agente_GNP.png">Agente GNP</option>
+                                            <option value="Arena_GNP.png">Arena GNP</option>
+                                            <option value="Bienestar_organizacional.png">Bienestar organizacional</option>
+                                            <option value="Logo_de_GNP.png">Logo de GNP</option>
+                                            <option value="LOGO_EMPRESARIALES.png">Logo Empresariales</option>
+                                            <option value="LOGO_VIDA.png">Logo Vida</option>
                                             <option value="Potros.png">Potros</option>
-                                            <option value="ViviresincreíbleAzul.png">Vivir es increíble Azul</option>
-                                            <option value="ViviresincreíbleNaranja.png">Vivir es increíble Naranja</option>
-                                            <option value="Vivirunidosesincreíblenaranja.jpg">Vivir unidos es increíble Naranja</option>
+                                            <option value="Vivir_es_increíble_Azul.png">Vivir es increíble Azul</option>
+                                            <option value="Vivir_es_increíble_Naranja.png">Vivir es increíble Naranja</option>
                                         </select>
                                     </div>
                                     
@@ -418,17 +416,15 @@
         var productID = "{{ $product->id }}";
 
         /* Logos */
-        var logo1 = "{{asset('img/AgenteGNP.png')}}";
-        var logo2 = "{{asset('img/ArenaGNP.png')}}";
-        var logo3 = "{{asset('img/Bienestarorganizacional.png')}}";
-        var logo4 = "{{asset('img/LogodeGNP.jpeg')}}";
-        var logo5 = "{{asset('img/LOGOEMPRESARIALES.jpg')}}";
-        var logo6 = "{{asset('img/LOGOVIDA.png')}}";
-        var logo7 = "{{asset('img/Logoysloganennegro.jpg')}}";
-        var logo8 = "{{asset('img/Potros.png')}}";
-        var logo9 = "{{asset('img/ViviresincreíbleAzul.png')}}";
-        var logo10 = "{{asset('img/ViviresincreíbleNaranja.png')}}";
-        var logo11 = "{{asset('img/Vivirunidosesincreíblenaranja.jpg')}}";
+        var logo1 = "{{asset('img/Agente_GNP.png')}}";
+        var logo2 = "{{asset('img/Arena_GNP.png')}}";
+        var logo3 = "{{asset('img/Bienestar_organizacional.png')}}";
+        var logo4 = "{{asset('img/Logo_de_GNP.png')}}";
+        var logo5 = "{{asset('img/LOGO_EMPRESARIALES.png')}}";
+        var logo6 = "{{asset('img/LOGO_VIDA.png')}}";
+        var logo7 = "{{asset('img/Potros.png')}}";
+        var logo8 = "{{asset('img/Vivir_es_increíble_Azul.png')}}";
+        var logo9 = "{{asset('img/Vivir_es_increíble_Naranja.png')}}";
 
         if(imageURL.startsWith("https://catalogodeproductos.promolife.lat/")){
             imageURL = imageURL.slice(41);
@@ -443,8 +439,6 @@
         var selectedLogo7 = document.getElementById("logo7");
         var selectedLogo8 = document.getElementById("logo8");
         var selectedLogo9 = document.getElementById("logo9");
-        var selectedLogo10 = document.getElementById("logo10");
-        var selectedLogo11 = document.getElementById("logo11");
 
         var logoSelect = document.getElementById("logos");
         
