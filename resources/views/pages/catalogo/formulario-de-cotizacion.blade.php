@@ -212,8 +212,8 @@
                                             <option value="LOGO_EMPRESARIALES.png">Logo Empresariales</option>
                                             <option value="LOGO_VIDA.png">Logo Vida</option>
                                             <option value="Potros.png">Potros</option>
-                                            <option value="Vivir_es_increíble_Azul.png">Vivir es increíble Azul</option>
-                                            <option value="Vivir_es_increíble_Naranja.png">Vivir es increíble Naranja</option>
+                                            <option value="ViviresincreíbleAzul.png">Vivir es increíble Azul</option>
+                                            <option value="ViviresincreíbleNaranja.png">Vivir es increíble Naranja</option>
                                         </select>
                                     </div>
                                     
