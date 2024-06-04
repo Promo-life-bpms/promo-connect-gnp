@@ -576,10 +576,13 @@ class CotizadorController extends Controller
             'maria.maldonado@gnp.com.mx',    
             'jaime.gonzalez@promolife.com.mx' 
         ]; */
+     
         
         $emails = [
-            'federico.solano@promolife.com.mx' 
+            auth()->user()->email,
+            'luz.enriquez@promolife.com.mx'
         ];
+        
         foreach ($emails as $email) {
             try {
                 Notification::route('mail', $email)
