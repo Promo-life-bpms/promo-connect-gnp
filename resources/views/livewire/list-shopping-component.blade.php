@@ -15,11 +15,12 @@
       @endif
       
         <table class="w-full table-auto">
-            <thead>
+            <thead class="text-sm">
               <tr class="bg-blue-900 text-white">
                 <th style="width: 10%;" class="p-2">#</th>
                 <th style="width: 10%;">Imagen</th>
                 <th style="width: 10%;">Producto</th>
+                <th style="width: 10%;">Usuario</th>
                 <th style="width: 20%;">Descripción</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Total</th>
@@ -31,7 +32,7 @@
                 @endrole
               </tr>
             </thead>
-            <tbody>
+            <tbody class="text-sm">
               @foreach ($shoppings  as $shopping)
                 @php
                   $product = json_decode($shopping->products[0]->product, true);
@@ -48,6 +49,11 @@
                         <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
                       @endif
                     </td>
+
+                    <td class="text-center px-4">
+                      <p>{{ $shopping->user->name  }} </p>
+                      <p>{{ $shopping->user->email}}</p>
+                  </td>
                     <td class="text-center">
                       {{ $product['name'] }}
                     </td>

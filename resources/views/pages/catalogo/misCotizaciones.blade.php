@@ -62,11 +62,11 @@
         <div class="w-full">
             <table class="table-auto">
                 <thead>
-                    <tr class="bg-blue-900 text-white">
+                    <tr class="bg-blue-900 text-white text-sm">
                         <th style="width:5%;">Cotizacion</th>
                         <th style="width:5%;">Logo</th>
                         <th style="width:10%;">Producto</th>
-                        <th style="width:10%;">Tecnica</th>
+                        <th style="width:10%;">Usuario</th>
                         <th style="width:20%;">Detalles</th>
                         <th style="width:10%;">Tiempo de entrega</th>
                         <th style="width:10%;">Cantidad</th>
@@ -94,8 +94,8 @@
 
                         @endphp
                         
-                        <tr class="border">
-                            <td class="text-center"><b>SQ-{{$quote->id}}</b></td>
+                        <tr class="border text-sm">
+                            <td class="text-center text-"><b>SQ-{{$quote->id}}</b></td>
                             <td class="text-center">
                                 @if($quote->logo == null || $quote->logo == '')
                                     <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
@@ -104,8 +104,12 @@
                                 @endif
                             </td>
                             <td class="text-center">{{$productName }}</td>
-                            <td class="text-center">{{isset($quoteTechnique->technique)? $quoteTechnique->technique : ''}}</td>
-                            <td>
+                            <td class="text-center px-4">
+                                <p>{{ $quote->user->name  }} </p>
+                                <p>{{ $quote->user->email}}</p>
+                            </td>
+                            <td class="text-xs">
+                                <p><b>Técnica: </b>  {{isset($quoteTechnique->technique)? $quoteTechnique->technique : ''}} </p>
                                 <p><b>Material: </b>  {{isset($quoteTechnique->material)? $quoteTechnique->material: ''}} </p>
                                 <p><b>Tamaño: </b>  {{isset($quoteTechnique->size)?  $quoteTechnique->size: '' }} </p>
                               </td>
