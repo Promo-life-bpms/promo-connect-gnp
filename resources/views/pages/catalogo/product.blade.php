@@ -130,7 +130,15 @@
                         <strong>Categorias</strong>
                         {{ $product->productCategories[0]->category->family }}
                     @endif
+                    <br>
+                    @foreach ($product->productAttributes as $attr)
+                        @if($attr->attribute == 'Impresion')
+                            <strong >{{ $attr->attribute }}:</strong > <strong class="text-orange-500"> {{  $attr->value }}</strong>
+                        @endif
+                    @endforeach
                     <p class="flex flex-grow text-lg grid-cols-1"><strong>Informacion de la cotizacion</strong></p>
+
+                    
                     @livewire('formulario-de-cotizacion', ['product' => $product])
                 </div>
             </div>
