@@ -182,7 +182,8 @@ class CurrentQuoteComponent extends Component
                     'sample_id' => $muestra->id,
                 ];
                 foreach ($users as $user) {
-                    // Enviar notificacion a los usuarios con el rol de vendedor y gerente de compras
+                    
+                    
                     $user->notify(new RequestedSampleNotification($dataNotification));
                 }
             }
