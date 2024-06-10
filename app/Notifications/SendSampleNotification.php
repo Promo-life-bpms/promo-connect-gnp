@@ -16,11 +16,14 @@ class SendSampleNotification extends Notification
      *
      * @return void
      */
-
-    public $data;
-    public function __construct($data)
+    
+    public $user, $type, $product;
+    
+    public function __construct($user, $type, $product)
     {
-        $this->data = $data;
+        $this->user = $user;
+        $this->type = $type;
+        $this->product = $product;
     }
 
     /**
@@ -44,7 +47,9 @@ class SendSampleNotification extends Notification
     {
         return (new MailMessage)
         ->markdown('mail.cotization', [
-            'data' =>  $this->data ,
+            'user' =>  $this->user ,
+            'type' =>  $this->type ,
+            'product' =>  $this->product ,
         ])
         ->subject('Solicitud de Muestra')
         ->from('adminportales@promolife.com.mx', 'Solicitud de Muestra');

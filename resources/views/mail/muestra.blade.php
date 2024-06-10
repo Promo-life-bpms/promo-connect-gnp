@@ -8,11 +8,9 @@ Queremos informarte que tu solicitud de muestra ha sido enviada correctamente, t
 
 Detalles:
 
-| Tipo  | Producto |   |   |   |
-|---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Tipo  | Producto |   
+|---|---|
+| {{ $type}} | {{ $product }} |   
 
 [Promo Life S. de R.L. de C.V.](https://www.promolife.mx/)
 San Andrés Atoto 155A Naucalpan de Juárez, Méx. C.P. 53550  
